@@ -1,12 +1,10 @@
-package com.glureau.minikard.ui
+package com.glureau.minikard.ui.shared
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.ArrowForward
 import androidx.compose.runtime.Composable
@@ -16,21 +14,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.glureau.minikard.ext.formatCurrency
 import java.math.BigDecimal
-import java.text.DecimalFormat
-import java.text.NumberFormat
 
 
 @Composable
 @Preview
-fun UserWelcomeBalance(userName: String = "Basile", accountBalance: BigDecimal = BigDecimal("1862.39")) {
+fun UserWelcomeBalance(firstName: String = "Basile", accountBalance: String = "1862,39 €") {
     Text(
-        text = "Salut $userName \uD83D\uDC4B",
+        text = "Salut $firstName \uD83D\uDC4B",
         style = MaterialTheme.typography.h1,
-        modifier = Modifier.padding(4.dp)
+        modifier = Modifier.padding(top = 28.dp, start = 4.dp, end = 4.dp)
     )
     Column(modifier = Modifier.padding(4.dp)) {
         Text(text = "SOLDE ACTUEL", style = MaterialTheme.typography.body1)
-        Text(text = accountBalance.formatCurrency(), style = MaterialTheme.typography.h1)
+        Text(text = accountBalance, style = MaterialTheme.typography.h1)
     }
 
     Row(modifier = Modifier.padding(4.dp)) {

@@ -1,0 +1,35 @@
+query UserTransactions
+{
+  me {
+   profile {
+    firstName
+   }
+   typedTransactions {
+     edges {
+       cursor
+       node {
+         id
+         title
+         category {
+           name
+         }
+         user {
+           firstName
+           lastName
+         }
+         amount {
+           currency {
+             isoCode
+           }
+           value
+         }
+       }
+     }
+     pageInfo {
+       startCursor
+       endCursor
+       hasNextPage
+     }
+   }
+  }
+ }

@@ -1,4 +1,4 @@
-package com.glureau.minikard.ui
+package com.glureau.minikard.ui.shared
 
 import androidx.compose.material.Icon
 import androidx.compose.material.Tab

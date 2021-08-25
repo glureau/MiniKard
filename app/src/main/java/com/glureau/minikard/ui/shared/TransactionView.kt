@@ -1,9 +1,10 @@
-package com.glureau.minikard.ui
+package com.glureau.minikard.ui.shared
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ShoppingCart
@@ -17,17 +18,17 @@ import com.glureau.minikard.ui.theme.KardMoneyBackground
 import java.math.BigDecimal
 import kotlin.random.Random
 
-data class UserBalanceEntryViewState(
+data class TransactionViewState(
     val title: String,
     val description: String,
-    val amount: BigDecimal,
+    val amount: String,
 )
 
 @Composable
 @Preview
-fun UserBalanceEntry(
-    viewState: UserBalanceEntryViewState =
-        UserBalanceEntryViewState("Rechargement", "Rechargement", BigDecimal(Random.nextInt(70)))
+fun TransactionView(
+    viewState: TransactionViewState =
+        TransactionViewState("Rechargement", "Rechargement", "70,00 €")
 ) {
     Row(Modifier.padding(12.dp)) {
         Icon(
@@ -44,11 +45,12 @@ fun UserBalanceEntry(
                 .padding(start = 12.dp)
         ) {
             Text(text = viewState.title)
-            Text(text = viewState.description)
+            Text(text = viewState.description, style = MaterialTheme.typography.body2)
         }
         Spacer(modifier = Modifier.weight(1f))
         Text(
-            text = viewState.amount.formatCurrency(),
+            text = viewState.amount,
+            maxLines = 1,
             modifier = Modifier
                 .align(Alignment.CenterVertically)
                 .padding(4.dp)

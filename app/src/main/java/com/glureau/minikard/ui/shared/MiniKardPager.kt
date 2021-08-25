@@ -1,4 +1,4 @@
-package com.glureau.minikard.ui
+package com.glureau.minikard.ui.shared
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Surface
@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.glureau.minikard.ui.home.HomeScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
