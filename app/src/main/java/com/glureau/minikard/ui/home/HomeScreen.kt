@@ -4,11 +4,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.glureau.minikard.ui.shared.*
 import org.koin.androidx.compose.getViewModel
 
@@ -37,12 +35,12 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
                     item {
                         Row(Modifier.padding(top = 16.dp, bottom = 8.dp)) {
                             Text(
-                                text = "La semaine du 2 aout",
+                                text = "La semaine du 26 août",
                                 modifier = Modifier.padding(start = 12.dp)
                             )
                             Spacer(Modifier.weight(1f))
                             Text(
-                                text = "1189,00 €",
+                                text = "123,45 €",
                                 modifier = Modifier.padding(end = 12.dp)
                             )
                         }

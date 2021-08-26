@@ -12,24 +12,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.glureau.minikard.ext.formatCurrency
-import java.math.BigDecimal
 
 
 @Composable
 @Preview
-fun UserWelcomeBalance(firstName: String = "Basile", accountBalance: String = "1862,39 €") {
+fun UserWelcomeBalance(firstName: String = "Maranatha", accountBalance: String = "1234,56 €") {
     Text(
         text = "Salut $firstName \uD83D\uDC4B",
         style = MaterialTheme.typography.h1,
         modifier = Modifier.padding(top = 28.dp, start = 4.dp, end = 4.dp)
     )
-    Column(modifier = Modifier.padding(4.dp)) {
+    Column(modifier = Modifier.padding(top = 20.dp, start = 4.dp, end = 4.dp)) {
         Text(text = "SOLDE ACTUEL", style = MaterialTheme.typography.body1)
         Text(text = accountBalance, style = MaterialTheme.typography.h1)
     }
 
-    Row(modifier = Modifier.padding(4.dp)) {
+    Row(modifier = Modifier.padding(start = 4.dp, top = 16.dp, bottom = 16.dp)) {
         Button(
             onClick = { /*TODO*/ },
             shape = MaterialTheme.shapes.large,

@@ -1,18 +1,20 @@
 package com.glureau.minikard.ui.shared
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.glureau.minikard.R
 
 @Preview
 @Composable
@@ -30,15 +32,11 @@ fun ActivateGooglePay() {
                 text = "Activer Google Pay",
                 style = MaterialTheme.typography.h2,
                 textAlign = TextAlign.Start,
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.padding(4.dp),
             )
             Text(text = "Paye avec ton smartphone", modifier = Modifier.padding(8.dp))
         }
         Spacer(Modifier.weight(1f))
-        Icon(
-            imageVector = Icons.Filled.ShoppingCart,
-            contentDescription = "GooglePay",
-            tint = Color.Green,
-        )
+        Image(painterResource(id = R.drawable.gpay),"GooglePay")
     }
 }
