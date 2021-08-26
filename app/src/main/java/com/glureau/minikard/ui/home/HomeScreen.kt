@@ -10,11 +10,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.glureau.minikard.ui.shared.*
+import org.koin.androidx.compose.getViewModel
 
 
 @ExperimentalMaterialApi
 @Composable
-fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
+fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
     val viewState = viewModel.viewState.observeAsState().value ?: return
 
     BottomSheet(
