@@ -1,6 +1,7 @@
 package com.glureau.minikard.ui.shared
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 
 
+@ExperimentalMaterialApi
 @ExperimentalPagerApi // https://google.github.io/accompanist/pager/
 @Composable
 fun MiniKardPager() {

@@ -5,6 +5,7 @@ import com.apollographql.apollo.coroutines.await
 import com.apollographql.apollo.exception.ApolloException
 import com.glureau.minikard.data.apollo.UserTransactionsQuery
 import java.math.BigDecimal
+import java.text.SimpleDateFormat
 import java.util.*
 
 class UserRepository(private val apolloClient: ApolloClient) {
@@ -26,20 +27,3 @@ class UserRepository(private val apolloClient: ApolloClient) {
         return Result.success(content.toDomain())
     }
 }
-
-private fun UserTransactionsQuery.Me.toDomain() = UserDomain(
-    firstName = this.profile?.firstName ?: "-",
-    transactions = this.typedTransactions?.edges?.mapNotNull { it?.node?.toDomain() } ?: emptyList()
-)
-
-private fun UserTransactionsQuery.Node.toDomain() = TransactionDomain(
-    id = id,
-    title = title,
-    category = category?.name,
-    amount = this.amount!!.toDomain()// Let's consider a Transaction always have an amount...
-)
-
-private fun UserTransactionsQuery.Amount.toDomain() = MoneyDomain(
-    amount = BigDecimal(String.format(Locale.ROOT, "%.2f", value)),
-    currencyIsoCode = currency!!.isoCode, // Let's consider a Money always have a currency...
-)

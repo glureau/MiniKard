@@ -2,7 +2,7 @@
 
 ### To do
 
-Implement popup details
+DI
 Handle user balance
-Styling
+Styling / clean theming
 Handle pagination

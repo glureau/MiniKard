@@ -1,6 +1,7 @@
 package com.glureau.minikard.ui.shared
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
@@ -11,26 +12,29 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.glureau.minikard.ext.formatCurrency
 import com.glureau.minikard.ui.theme.KardMoneyBackground
-import java.math.BigDecimal
-import kotlin.random.Random
 
 data class TransactionViewState(
-    val title: String,
-    val description: String,
-    val amount: String,
+    val id: String = "-",
+    val title: String = "-",
+    val description: String = "-",
+    val amount: String = "-",
+    val emitterName: String = "-",
+    val emitterAvatarUrl: String? = "-",
+    val processedAt: String = "-",
+    val comments: List<CommentViewState> = emptyList(),
 )
 
 @Composable
-@Preview
 fun TransactionView(
-    viewState: TransactionViewState =
-        TransactionViewState("Rechargement", "Rechargement", "70,00 €")
+    viewState: TransactionViewState,
+    onClick: (TransactionViewState) -> Unit = {}
 ) {
-    Row(Modifier.padding(12.dp)) {
+    Row(
+        Modifier
+            .clickable { onClick(viewState) }
+            .padding(12.dp)) {
         Icon(
             imageVector = Icons.Filled.ShoppingCart,
             contentDescription = "account",

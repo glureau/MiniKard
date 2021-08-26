@@ -4,9 +4,16 @@ query UserTransactions
    profile {
     firstName
    }
+   bankAccount {
+     balance {
+         currency {
+           isoCode
+         }
+         value
+     }
+   }
    typedTransactions {
      edges {
-       cursor
        node {
          id
          title
@@ -16,6 +23,7 @@ query UserTransactions
          user {
            firstName
            lastName
+           avatar { url }
          }
          amount {
            currency {
@@ -23,12 +31,22 @@ query UserTransactions
            }
            value
          }
+         processedAt
+         comments {
+          edges {
+            node {
+              id
+              comment
+              createdAt
+              user {
+                firstName
+                lastName
+                avatar { url }
+              }
+            }
+          }
+        }
        }
-     }
-     pageInfo {
-       startCursor
-       endCursor
-       hasNextPage
      }
    }
   }
