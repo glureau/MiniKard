@@ -21,12 +21,6 @@ import kotlinx.coroutines.launch
 @ExperimentalPagerApi
 @Composable
 fun IconTab(modifier: Modifier, pagerState: PagerState) {
-    // Hardcoded for test, should be parameterized indeed
-    val tabData = listOf(
-        Icons.Filled.MailOutline,
-        Icons.Filled.Home,
-        Icons.Filled.AccountBox,
-    )
     val composableScope = rememberCoroutineScope()
     TabRow(modifier = modifier,
         selectedTabIndex = pagerState.currentPage,
@@ -35,13 +29,13 @@ fun IconTab(modifier: Modifier, pagerState: PagerState) {
                 Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
             )
         }) {
-        tabData.forEachIndexed { index, icon ->
+        Screens.values().forEachIndexed { index, screen ->
             Tab(selected = pagerState.currentPage == index, onClick = {
                 composableScope.launch {
                     pagerState.animateScrollToPage(index)
                 }
             }, icon = {
-                Icon(imageVector = icon, contentDescription = null)
+                Icon(imageVector = screen.menuIcon, contentDescription = null)
             })
         }
     }

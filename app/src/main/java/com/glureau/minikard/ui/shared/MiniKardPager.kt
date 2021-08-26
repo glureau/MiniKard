@@ -2,23 +2,37 @@ package com.glureau.minikard.ui.shared
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Surface
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import com.glureau.minikard.ui.home.HomeScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 
+// Use enum ordinal to order app screens
+enum class Screens(val menuIcon: ImageVector) {
+    KarDeals(Icons.Filled.MailOutline),
+    Home(Icons.Filled.Home),
+    Profile(Icons.Filled.AccountBox)
+}
 
 @ExperimentalMaterialApi
 @ExperimentalPagerApi // https://google.github.io/accompanist/pager/
 @Composable
 fun MiniKardPager() {
-    val pagerState = rememberPagerState(pageCount = 3, initialPage = 1)
+    val pagerState = rememberPagerState(
+        pageCount = Screens.values().count(),
+        initialPage = Screens.Home.ordinal
+    )
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxHeight()
@@ -28,17 +42,17 @@ fun MiniKardPager() {
             modifier = Modifier
         ) { page ->
             when (page) {
-                0 -> ToDoScreen("KarDeals", Color.Green)
-                1 -> HomeScreen()
-                else -> ToDoScreen("Profile", Color.Blue)
+                Screens.KarDeals.ordinal -> ToDoScreen("KarDeals")
+                Screens.Home.ordinal -> HomeScreen()
+                Screens.Profile.ordinal -> ToDoScreen("Profile")
             }
-            // Our page content
         }
     }
 
     Box(Modifier.fillMaxSize()) {
         IconTab(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .align(Alignment.BottomCenter),
             pagerState = pagerState
         )
@@ -47,10 +61,15 @@ fun MiniKardPager() {
 
 @ExperimentalPagerApi
 @Composable
-fun ToDoScreen(text: String, color: Color) {
-    Surface(color = color, modifier = Modifier.fillMaxSize()) {
+fun ToDoScreen(text: String) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = CenterHorizontally
+    ) {
         Text(
             text = text,
+            style = MaterialTheme.typography.h1,
         )
     }
 }
